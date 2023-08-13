@@ -1,0 +1,128 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Newsletter sign-up form with success message</title>
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <section class="before-submission">
+      <div class="left-col">
+        <h2>Stay updated!</h2>
+        <p>Join 60,000+ product managers receiving monthly updates on:</p>
+
+        <ul class="list-updates">
+          <li>Product discovery and building what matters</li>
+          <li>Measuring to ensure updates are a success</li>
+          <li>And much more!</li>
+        </ul>
+
+        <div class="newsletter-form">
+          <div class="form-label">
+            <label for="email">Email address</label>
+            <label class="error-message">Valid email required</label>
+          </div>
+          <form>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="email@company.com"
+              required
+            />
+            <button type="submit">Subscribe to monthly newsletter</button>
+          </form>
+        </div>
+      </div>
+      <div class="right-col">
+        <img
+          class="illustration-desktop"
+          src="./assets/images/illustration-sign-up-desktop.svg"
+          alt="Newsletter Image"
+        />
+        <img
+          class="illustration-mobile"
+          src="./assets/images/illustration-sign-up-mobile.svg"
+          alt="Newsletter Image"
+        />
+      </div>
+    </section>
+
+    <section class="after-submission">
+      <img src="./assets/images/icon-success.svg" alt="Success icon" />
+      <h2>Thanks for subscribing!</h2>
+      <p>
+        A confirmation email has been sent to
+        <strong>balogunkrixus@gmail.com</strong>. Please open it and click the
+        button inside to confirm your subscription
+      </p>
+      <button class="dismiss-button" type="submit">Dismiss message</button>
+    </section>
+
+    <script>
+      const emailInput = document.getElementById("email");
+      const errorMessage = document.querySelector(".error-message");
+      const form = document.querySelector(".newsletter-form form");
+      const beforeSubmissionSection =
+        document.querySelector(".before-submission");
+      const afterSubmissionSection =
+        document.querySelector(".after-submission");
+      const dismissButton = document.querySelector(".dismiss-button");
+
+      emailInput.addEventListener("input", function () {
+        const emailValue = emailInput.value.trim();
+
+        // Check if the email is valid
+        if (!isValidEmail(emailValue)) {
+          // Show the error message
+          errorMessage.style.display = "block";
+        } else {
+          // Hide the error message
+          errorMessage.style.display = "none";
+        }
+      });
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const emailValue = emailInput.value.trim();
+
+        // Check if the email is valid
+        if (!isValidEmail(emailValue)) {
+          // Show the error message and don't proceed with form submission
+          errorMessage.style.display = "block";
+          return;
+        }
+
+        // Hide the error message if it was previously shown
+        errorMessage.style.display = "none";
+
+        // Hide the before-submission section
+        beforeSubmissionSection.style.display = "none";
+
+        // Show the after-submission section
+        afterSubmissionSection.style.display = "block";
+      });
+
+      dismissButton.addEventListener("click", function () {
+        // Show the before-submission section
+        beforeSubmissionSection.style.display = "flex";
+
+        // Hide the after-submission section
+        afterSubmissionSection.style.display = "none";
+      });
+
+      function isValidEmail(email) {
+        // Use a regular expression to validate the email format
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailPattern.test(email);
+      }
+    </script>
+  </body>
+</html>

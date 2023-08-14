@@ -1,7 +1,9 @@
 #Newsletter Sign-Up Form
+
 Welcome to the Newsletter Sign-Up Form mini-project! This project was created as a part of a front-end challenge, focusing on developing a responsive and user-friendly sign-up form for subscribing to a newsletter. The form includes a success message that appears upon successful submission.
 
 ##Features
+
 User-friendly interface for newsletter subscription.
 Responsive design ensuring compatibility across various devices and screen sizes.
 Immediate display of a success message upon successful form submission.
